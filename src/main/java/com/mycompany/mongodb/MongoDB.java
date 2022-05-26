@@ -1,15 +1,10 @@
 package com.mycompany.mongodb;
 
-import com.mongodb.client.AggregateIterable;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
 import org.bson.Document;
 
 /**

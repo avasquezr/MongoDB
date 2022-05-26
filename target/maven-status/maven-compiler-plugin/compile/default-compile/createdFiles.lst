@@ -1,2 +1,4 @@
 com\mycompany\mongodb\MongoDB.class
+com\mycompany\mongodb\UtilsRandom.class
+com\mycompany\mongodb\CRUDModel.class
 com\mycompany\mongodb\Otro.class
