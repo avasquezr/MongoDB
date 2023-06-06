@@ -5,30 +5,16 @@
  */
 package com.mycompany.mongodb;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.client.AggregateIterable;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Accumulators;
-import com.mongodb.client.model.Aggregates;
-import com.mongodb.client.model.Field;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Projections;
-import static com.mongodb.client.model.Projections.computed;
-import static com.mongodb.client.model.Projections.excludeId;
-import static com.mongodb.client.model.Projections.include;
-import com.mongodb.client.model.Sorts;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import com.mongodb.client.*;
+import com.mongodb.client.model.*;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import static com.mongodb.client.model.Projections.*;
 
 /**
  *
@@ -50,7 +36,7 @@ public class CRUDModel {
         // Para insertar los datos del cliente, se utilizará un Map
         HashMap<String, Object> datosCliente = new HashMap<>();
         // ArrayList para insertar un listado de teléfonos
-        ArrayList telefonos = new ArrayList<>();
+        List<String> telefonos = new ArrayList<>();
         telefonos.add("809-895-9841");
         telefonos.add("829-985-9852");
 
@@ -90,16 +76,13 @@ public class CRUDModel {
         MongoCollection<Document> auditoriaUsuario = database.getCollection("auditoriaUsuario");
 
         // Obtener un cursor con el resultado del find(), utilizado para consultar las auditorías.
-        MongoCursor<Document> cursorAuditoria = auditoriaUsuario.find().iterator();
 
-        try {
+        try (MongoCursor<Document> cursorAuditoria = auditoriaUsuario.find().iterator()) {
             // Recorrer cada documento del cursor, utilizando hasNext() para verificar si tiene
             // un próximo documento y next() para obtener el mismo.
             while (cursorAuditoria.hasNext()) {
                 System.out.println(cursorAuditoria.next());
             }
-        } finally {
-            cursorAuditoria.close();
         }
     }
 
