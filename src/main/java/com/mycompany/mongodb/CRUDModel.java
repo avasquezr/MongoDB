@@ -95,7 +95,7 @@ public class CRUDModel {
 
         // Obtener las modificaciones realizadas por el usuario AVASQUEZ entre el 01/03/2019 y 15/08/2019
         Bson[] condiciones = {Filters.gte("fechaModificacion", sdf.parse("2019-03-01")),
-            Filters.lte("fechaModificacion", sdf.parse("2019-04-15")),
+            Filters.lte("fechaModificacion", sdf.parse("2020-04-15")),
             Filters.eq("usuario", "AVASQUEZ")};
         // Utilizando el conector lógica and(), agregar las condiciones insertadas en el arreglo condiciones
         FindIterable<Document> consulta = auditoriaUsuario.find(Filters.and(condiciones))

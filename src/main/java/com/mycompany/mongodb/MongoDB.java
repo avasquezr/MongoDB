@@ -38,7 +38,9 @@ public class MongoDB {
             System.out.println("\n\n\nCantidad Documentos Colección OrdenCompra==> " + countDocuments + "\n\n");
             
             CRUDModel crudModel = new CRUDModel();
-            crudModel.listadoTotalVendidoPorCliente(database);
+            crudModel.insertarVariosDocumentosAuditoria(database);
+            //crudModel.listadoTotalVendidoPorCliente(database);
+            crudModel.consultarAuditoriaFiltro(database);
         }
     }
 
